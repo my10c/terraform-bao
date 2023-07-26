@@ -1,0 +1,35 @@
+#cloud-config
+repo_update: true
+repo_upgrade: all
+
+packages:
+ - net-tools
+ - screen
+ - tmux
+ - traceroute
+ - vim
+ - zip
+ - zsh
+
+runcmd:
+ - echo '- * - '
+ - update-alternatives --set editor /usr/bin/vim.basic
+ - echo '- * - '
+ - sudo groupadd --force -g 400 ansible
+ - sudo useradd --gid 400 --uid 4001 --create-home --comment 'Ansible Admin' --shell /bin/bash ansible
+ - echo '- * - '
+ - sudo mkdir -p /home/ansible/.ssh
+ - echo '- * - '
+ - sudo cp /home/ubuntu/.ssh/authorized_keys /home/ansible/.ssh/
+ - echo '- * - '
+ - sudo chmod 0700 /home/ansible /home/ansible/.ssh
+ - echo '- * - '
+ - sudo chmod 0400 /home/ansible/.ssh/authorized_keys
+ - echo '- * - '
+ - sudo chown -R ansible:400 /home/ansible
+ - echo '- * - '
+ - echo 'ansible ALL=(ALL) NOPASSWD:ALL' > /var/tmp/ansible
+ - sudo cp /var/tmp/ansible /etc/sudoers.d/ansible
+ - sudo chmod 0400 /etc/sudoers.d/ansible
+ - sudo chown 0:0 /etc/sudoers.d/ansible
+ - echo '- * - '

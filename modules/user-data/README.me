@@ -1,0 +1,14 @@
+### notes
+
+- user data is use to setup some initial thing for an ec2 instance
+- [info](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
+- userdata.txt is a plain text of the task to perform once the instance is ready
+- the first line must be `#cloud-config`
+- to create a base64 version execute the command `base64 -w 0 userdata_txt > userdata.b64`
+- check the script `create_base64`
+- use the content of the file userdata.b64 as value for the variable var.user_data
+
+
+#### TODO
+
+Support in Google Cloud

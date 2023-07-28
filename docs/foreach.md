@@ -1,4 +1,6 @@
-#### foreach
+#### The foreach loop
+
+The terraform foreach loop
 
 example
 ```

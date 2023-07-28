@@ -1,4 +1,5 @@
 #### Drift Management
+
 Terraform doesn’t really do much drift management. Only some resource attributes are checked. 
 All detected drift is fixed by “apply”.
 

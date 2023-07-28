@@ -1,0 +1,97 @@
+# AWS account
+aws_account = "123456789012"
+aws_region  = "us-west-2"
+aws_profile = "default"
+
+# The base tag value for Name
+tag_name = "our-env"
+environment = "our-env"
+
+# VPC
+# example with 4 zones
+vpc_azs             = ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"]
+vpc_name            = "usw2-prod"
+vpc_cidr            = "10.100.0.0/16"
+vpc_net             = "10.100"
+vpc_private_subnets = ["10.100.128.0/19", "10.100.160.0/19", "10.100.192.0/19", "10.100.224.0/19"]
+vpc_public_subnets  = ["10.100.0.0/19", "10.100.32.0/19", "10.100.64.0/19", "10.100.96.0/19"]
+vpc_private_cidr    = "10.100.128.0/17"
+vpc_public_cidr     = "10.100.0.0/17"
+
+# CICD
+cicd_environment = ["cicd"]
+cicd_linux_ami   = "ami-xxxxxxxxxxxxxxxxx"
+
+# devops instance
+devops_instances = ["primary", "secondary", "jump"]
+devops_instance_type = ["t3.small", "t3.small", "t3a.medium"]
+devops_linux_ami = "ami-0eda2e27fbfac8ea8"
+
+# keypair
+keypair_name = "our-key"
+keypair_pub  = "awesome 4096 bits RSA key"
+
+# Pfense
+# IP allowed to access console (https)
+pfsense_admin_ips    = ["xxx.xxx.xxx.xxx/32"]
+pfsense_vpn_udp_port = "xxx"
+pfsense_vpn_tcp_port = "xxx"
+
+# RDS
+rds_psql_db_name              = ["oud-rds"]
+rds_psql_identifier           = ["primary"]
+rds_psql_class                = ["db.t3.medium"]
+rds_psql_engine_version       = ["13.3"]
+rds_psql_major_engine_version = ["13"]
+rds_psql_iops                 = ["500"]
+rds_psql_multi_az             = ["true"]
+rds_psql_option_group_name    = ["default:postgres-13"]
+rds_psql_parameter_group      = ["postgres13"]
+rds_psql_storage_start        = ["32"]
+rds_psql_storage_max          = ["128"]
+rds_psql_subnet_name          = "prod-private-subnets"
+# common for any rds model
+rds_retention_period     = ["7"]
+rds_backup_window        = ["06:10-07:10"]
+rds_maintenance_window   = ["sat:07:10-sat:08:10"]
+rds_monitoring_interval  = ["60"]
+rds_performance_insights = ["true"]
+# logs
+rds_enabled_cloudwatch = ["postgresql"]
+
+# user data
+user_data = "so cool user data"
+
+# s3 buckets
+s3_buckets = ["our-artifact"]
+s3_expires_day = [14]
+s3_replication_role = "arn:aws:iam::123456789012:role/s3-arifacts-replication"
+s3_destination_bucket = "arn:aws:s3:::s3-prod-artifact"
+
+# base s3 buckets
+s3_buckets_base = []
+s3_base_expires_day = [0]
+
+# the ops server (nginx providers)
+ops_linux_ami     = "ami-xxxxxxxxxxxxxxxxx"
+ops_instance_type = "t3.medium"
+ops_instances     = [ "nginx-01", "nginx-02" ]
+
+# target groupd
+target_groups         = ["blue", "green"]
+target_group_port     = [ "80", "81" ]
+target_group_protocol = ["HTTP", "HTTP"]
+
+# acm
+acm_domains     = ["ourdomain.tld"]
+acm_validations = ["DNS"]
+acm_sans        = [
+  ["*.ourdomain.tld", "otherdomain.tld", "*.otherdomain.tld"]
+]
+
+# load balancer
+lbs           = ["ops-systems"]
+lbs_internal  = ["false"]
+lbs_type      = ["application"]
+lb_protection = ["true"]
+
